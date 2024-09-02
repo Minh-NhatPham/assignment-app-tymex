@@ -1,9 +1,21 @@
 import { Input } from "antd";
-import React from "react";
+import React, { useState } from "react";
 
 // TODO: add search icon infront search inputaddonBefore={<SearchOutlined />}
 function SearchBox({}) {
-  return <Input placeholder="Search" className="search-box" />;
+  const handleSearch = (e) => {
+    console.log(e.target.value);
+  };
+  return (
+    <Input
+      placeholder="Search"
+      className="search-box"
+      onChange={handleSearch}
+      onKeyDown={(e) => {
+        console.log(e);
+      }}
+    />
+  );
 }
 
 export default SearchBox;

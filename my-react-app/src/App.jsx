@@ -5,6 +5,8 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import SearchBox from "./components/search";
 import CardList from "./listings/CardList";
+import Sidebar from "./components/Sidebar";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,17 +15,7 @@ function App() {
     <>
       <Flex>
         <Layout>
-          <Sider width="20%">
-            <SearchBox />
-          </Sider>
-          <Layout>
-            <Header>Header</Header>
-            <Content>
-              <CardList />
-              <button>Load more</button>
-            </Content>
-            <Footer>Footer</Footer>
-          </Layout>
+          <SearchPage />
         </Layout>
       </Flex>
     </>

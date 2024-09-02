@@ -1,24 +1,81 @@
 import { List } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { customFetch } from "../utils/customFetch";
 import CardItem from "./card";
 
-function CardList() {
-  const item = { title: "title", content: "content" };
-  const listItems = [item, item, item, item, item];
+const refreshTime = 10000;
 
+function CardList({ filters }) {
+  console.log("refresh cardlist");
+  const item = { title: "title", content: "content" };
+  const itemjack = { title: "jack", content: "jack" };
+
+  const itemlu = { title: "title", content: "lucy" };
+
+  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(false);
+
+  //   useEffect(() => {
+  //     const setupRefreshData = setInterval(() => {
+  //       customFetch({ url: "/products", params: { page: page, skip: false } });
+  //     }, refreshTime);
+  //     return () => clearInterval(setupRefreshData);
+  //   }, []);
+
+  const listItems = [
+    item,
+    item,
+    item,
+    item,
+    itemjack,
+    itemjack,
+    item,
+    itemlu,
+    itemlu,
+    itemlu,
+    itemlu,
+  ];
+  function filterItems(items, filters) {
+    return items.filter((item) => {
+      return Object.keys(filters).every((key) => {
+        if (filters[key] === "all") {
+          return item[key];
+        }
+        return item[key] === filters[key];
+      });
+    });
+  }
+  const handleLoadMore = (e) => {
+    e.preventDefault();
+    setPage((p) => p + 1);
+    setLoading(true);
+    const data = customFetch({ url: "/products", params: { page: page + 1, skip: true } }); //TODO: update custom fetch to call API
+    if (data) {
+      setData(data);
+    }
+  };
   return (
-    <List
-      grid={{
-        gutter: 8,
-        column: 3,
-      }}
-      dataSource={listItems}
-      renderItem={(item) => (
-        <List.Item>
-          <CardItem title={item.title} content={item.content} />;
-        </List.Item>
-      )}
-    />
+    <>
+      <List
+        grid={{
+          gutter: 8,
+          column: 3,
+        }}
+        dataSource={filterItems(listItems, filters)}
+        renderItem={(item) => {
+          console.log("sadsad,", item);
+          return (
+            <List.Item>
+              <CardItem title={item.title} content={item.content} />
+            </List.Item>
+          );
+        }}
+      />
+      <button onClick={handleLoadMore} disabled={loading}>
+        Load more
+      </button>
+    </>
   );
 }
 
