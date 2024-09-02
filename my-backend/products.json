@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "category": "Barton-Kutch",
+    "name": "Jakubowski, O'Reilly and Wiza",
+    "gender": "Male"
+  },
+  {
+    "id": 2,
+    "category": "Parisian and Sons",
+    "name": "Crist, Aufderhar and Homenick",
+    "gender": "Male"
+  },
+  {
+    "id": 3,
+    "category": "Weber Group",
+    "name": "Murray LLC",
+    "gender": "Genderfluid"
+  },
+  {
+    "id": 4,
+    "category": "Crona-Streich",
+    "name": "Cummerata-Klein",
+    "gender": "Female"
+  },
+  {
+    "id": 5,
+    "category": "Wintheiser, MacGyver and Considine",
+    "name": "Braun-Miller",
+    "gender": "Bigender"
+  }
+]

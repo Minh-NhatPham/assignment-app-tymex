@@ -14,14 +14,24 @@ function CardList({ filters }) {
 
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(false);
+  const [data, setData] = useState(null);
 
-  //   useEffect(() => {
-  //     const setupRefreshData = setInterval(() => {
-  //       customFetch({ url: "/products", params: { page: page, skip: false } });
-  //     }, refreshTime);
-  //     return () => clearInterval(setupRefreshData);
-  //   }, []);
+  useEffect(() => {
+    // const setupRefreshData = setInterval(() => {
+    //   customFetch({ url: "/products", params: { page: page, skip: false } });
+    // }, refreshTime);
+    // return () => clearInterval(setupRefreshData);
+  }, [page]);
+
+  useEffect(() => {
+    if (!data) {
+      setLoading(true);
+      customFetch({ url: "/products", params: { page: page, skip: false } }).then((response) => {
+        setData(response.data);
+        setLoading(false);
+      });
+    }
+  }, []);
 
   const listItems = [
     item,
@@ -46,35 +56,44 @@ function CardList({ filters }) {
       });
     });
   }
-  const handleLoadMore = (e) => {
+  const handleLoadMore = async (e) => {
     e.preventDefault();
     setPage((p) => p + 1);
     setLoading(true);
-    const data = customFetch({ url: "/products", params: { page: page + 1, skip: true } }); //TODO: update custom fetch to call API
+    const { data } = await customFetch({
+      url: "/products",
+      params: { page: page + 1, skip: true },
+    }); //TODO: update custom fetch to call API
     if (data) {
       setData(data);
+      setLoading(false);
     }
   };
   return (
     <>
-      <List
-        grid={{
-          gutter: 8,
-          column: 3,
-        }}
-        dataSource={filterItems(listItems, filters)}
-        renderItem={(item) => {
-          console.log("sadsad,", item);
-          return (
-            <List.Item>
-              <CardItem title={item.title} content={item.content} />
-            </List.Item>
-          );
-        }}
-      />
-      <button onClick={handleLoadMore} disabled={loading}>
-        Load more
-      </button>
+      {loading ? (
+        <>ccc</>
+      ) : (
+        <>
+          <List
+            grid={{
+              gutter: 8,
+              column: 3,
+            }}
+            dataSource={filterItems(listItems, filters)}
+            renderItem={(item) => {
+              return (
+                <List.Item>
+                  <CardItem title={item.title} content={item.content} />
+                </List.Item>
+              );
+            }}
+          />
+          <button onClick={handleLoadMore} disabled={loading}>
+            Load more
+          </button>
+        </>
+      )}
     </>
   );
 }

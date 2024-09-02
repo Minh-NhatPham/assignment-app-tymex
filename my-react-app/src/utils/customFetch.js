@@ -1,20 +1,22 @@
 // api.js
 import axios from "axios";
 
+const baseURL = "http://localhost:5175";
+
 const axiosConfig = {
-  baseURL: "http:localhost://5175",
+  baseURL,
   headers: {
     "Content-Type": "application/json",
   },
 };
 const axiosInstance = axios.create(axiosConfig);
 
-export const customFetch = async ({ body = {}, path, ...config }) => {
+export const customFetch = async ({ body = {}, url = "", ...config }) => {
   try {
-    console.log("conf", path, config);
     const request = {
       method: "GET",
       body,
+      url,
       ...config,
     };
     const { data } = await axiosInstance.request(request);
