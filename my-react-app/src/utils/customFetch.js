@@ -1,4 +1,3 @@
-// api.js
 import axios from "axios";
 
 const baseURL = "http://localhost:5175";
@@ -26,6 +25,6 @@ export const customFetch = async ({ body = {}, url = "", ...config }) => {
     return undefined;
   } catch (error) {
     console.error("Error fetching data:", error);
-    throw error; // Rethrow the error to be handled by the caller
+    throw error;
   }
 };

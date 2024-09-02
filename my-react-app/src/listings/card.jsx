@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "antd";
-function CardItem({ title, content }) {
+function CardItem({ title, description }) {
   return (
     <Card
       hoverable
@@ -10,7 +10,7 @@ function CardItem({ title, content }) {
       cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
     >
       {title}
-      <span>{content}</span>
+      <span>{description}</span>
     </Card>
   );
 }
