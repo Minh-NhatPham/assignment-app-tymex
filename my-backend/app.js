@@ -12,7 +12,7 @@ app.use(cors({ origin: "*", methods: "GET", origin: "http://localhost:5173" }));
 app.get("/products", async (req, res) => {
   const { page, refresh } = req.query;
   const start = refresh ? 0 : page * itemPerPage;
-  const itemsCount = refresh ? page * itemPerPage : start + itemPerPage;
+  const itemsCount = refresh ? page * itemPerPage + itemPerPage : start + itemPerPage;
 
   let response;
 
@@ -28,6 +28,8 @@ app.get("/products", async (req, res) => {
 app.get("/category", (req, res) => {
   fs.readFile("./category.json", (err, data) => {
     if (err) throw err;
+    let response;
+
     response = JSON.parse(data);
     console.log("🚀 ~ fs.readFile ~ response:", response);
     res.json({ data: response });

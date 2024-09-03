@@ -8,3 +8,13 @@ export const filterItems = (items, filters) => {
     });
   });
 };
+
+export const buildCategoriesOptions = (categories) => {
+  return Object.keys(categories).map((key) => {
+    const options = categories[key].map((option) => ({
+      value: `${key}:${option.value}`,
+      label: option.label,
+    }));
+    return options;
+  });
+};

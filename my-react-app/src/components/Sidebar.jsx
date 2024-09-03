@@ -1,8 +1,11 @@
 import { Select } from "antd";
 import React from "react";
+import useFetch from "../hooks/useFetch";
+import { buildCategoriesOptions } from "../utils/utils";
 import SearchBox from "./search";
 
 function Sidebar({ onFilterChange }) {
+  const { error, loading, response } = useFetch({ url: "/category" }, []);
   const handleChange = (option) => {
     const [key, value] = option.split(":");
     console.log("key,", key, value);
@@ -22,53 +25,17 @@ function Sidebar({ onFilterChange }) {
           <option value="adu">adu</option>
           <option value="ad2">adu</option>
         </select>
-        <Select
-          defaultValue="title:all"
-          style={{
-            width: 120,
-          }}
-          name
-          onChange={handleChange}
-          options={[
-            {
-              value: "title:all",
-              label: "All",
-            },
-            {
-              value: "title:jack",
-              label: "Jack",
-            },
-            {
-              value: "title:lucy",
-              label: "Lucy",
-            },
-          ]}
-        />
       </div>
-      <div>
-        <span>name</span>
-        <Select
-          defaultValue="content:all"
-          style={{
-            width: 120,
-          }}
-          onChange={handleChange}
-          options={[
-            {
-              value: "content:all",
-              label: "All",
-            },
-            {
-              value: "content:jack",
-              label: "Jack",
-            },
-            {
-              value: "content:lucy",
-              label: "Lucy",
-            },
-          ]}
-        />
-      </div>
+      {response?.data
+        ? buildCategoriesOptions(response.data).map((options) => (
+            <Select
+              style={{ width: 120 }}
+              defaultValue={"All"}
+              options={options}
+              onChange={handleChange}
+            />
+          ))
+        : null}
     </>
   );
 }

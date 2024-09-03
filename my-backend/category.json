@@ -1,22 +1,14 @@
-[
-  {
-    "id": 1,
-    "name": "Jakubowski, O'Reilly and Wiza"
-  },
-  {
-    "id": 2,
-    "name": "Crist, Aufderhar and Homenick"
-  },
-  {
-    "id": 3,
-    "name": "Murray LLC"
-  },
-  {
-    "id": 4,
-    "name": "Cummerata-Klein"
-  },
-  {
-    "id": 5,
-    "name": "Braun-Miller"
-  }
-]
+{
+  "gender": [
+    { "value": "all", "label": "All" },
+    { "value": "M", "label": "Male" },
+    { "value": "F", "label": "Female" },
+    { "value": "U", "label": "Unisex" }
+  ],
+  "category": [
+    { "value": "all", "label": "All" },
+    { "value": "jacket", "label": "Cold Jacket" },
+    { "value": "shirt", "label": "T-shirt" },
+    { "value": "pants", "label": "Pants" }
+  ]
+}
