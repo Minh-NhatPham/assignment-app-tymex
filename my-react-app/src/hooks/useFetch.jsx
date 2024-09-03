@@ -22,7 +22,7 @@ const useFetch = (
       try {
         setLoading(true);
         const res = await customFetch({ method, url, data, headers, ...requestConfig });
-        setResponse(res.data);
+        setResponse(res);
       } catch (err) {
         setError(err.message);
       } finally {

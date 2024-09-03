@@ -18,8 +18,10 @@ app.get("/products", async (req, res) => {
 
   fs.readFile("./products.json", (err, data) => {
     if (err) throw err;
-    response = JSON.parse(data)?.slice(start, itemsCount);
-    res.json({ data: response });
+    const totalItems = Array.from(JSON.parse(data));
+    response = totalItems?.slice(start, itemsCount);
+    const pageCount = Math.ceil(totalItems.length / itemPerPage) - 1;
+    res.json({ data: response, totalPage: pageCount });
   });
 });
 
@@ -29,6 +31,21 @@ app.get("/category", (req, res) => {
     response = JSON.parse(data);
     console.log("🚀 ~ fs.readFile ~ response:", response);
     res.json({ data: response });
+  });
+});
+
+app.get("/search", (req, res) => {
+  const { keyword } = req.query;
+  let response;
+  fs.readFile("./products.json", (err, data) => {
+    if (err) throw err;
+    response = JSON.parse(data);
+    console.log("🚀 ~ fs.readFile ~ array from:", Array.from(response));
+    const items = response?.filter(
+      (item) =>
+        item?.name?.toLowerCase().includes(keyword) || item.gender?.toLowerCase().includes(keyword)
+    );
+    res.json({ data: items });
   });
 });
 

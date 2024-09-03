@@ -7,16 +7,24 @@ import CardItem from "./card";
 function CardList({ filters }) {
   const [page, setPage] = useState(0);
   const [list, setList] = useState([]);
+  const [showLoadMore, setShowLoadMore] = useState(true);
 
   const { error, loading, response } = useFetch(
     { url: "/products", params: { page, skip: false } },
     [page],
-    { autoRefresh: true, shouldFetch: true }
+    {
+      autoRefresh: true,
+      shouldFetch: true,
+    }
   );
 
   useEffect(() => {
     if (response) {
-      setList([...list, ...response]);
+      const { data, totalPage } = response;
+      setList([...list, ...data]);
+      if (totalPage <= page) {
+        setShowLoadMore(false);
+      }
     }
   }, [response]);
   const item = { title: "title", content: "content" };
@@ -52,9 +60,13 @@ function CardList({ filters }) {
           />
         </>
       )}
-      <button onClick={handleLoadMore} disabled={loading}>
-        Load more
-      </button>
+      {showLoadMore ? (
+        <button onClick={handleLoadMore} disabled={loading}>
+          Load more
+        </button>
+      ) : (
+        <>You've seen all the products</>
+      )}
     </>
   );
 }
