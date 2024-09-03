@@ -1,4 +1,4 @@
-import { List } from "antd";
+import { List, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { filterItems } from "../utils/utils";
@@ -11,7 +11,7 @@ function CardList({ filters }) {
   const { error, loading, response } = useFetch(
     { url: "/products", params: { page, skip: false } },
     [page],
-    true
+    { autoRefresh: true, shouldFetch: true }
   );
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function CardList({ filters }) {
   return (
     <>
       {loading ? (
-        <>Loading</>
+        <Spin size="large" />
       ) : (
         <>
           <List

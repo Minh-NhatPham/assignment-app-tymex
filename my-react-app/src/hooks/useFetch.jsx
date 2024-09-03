@@ -3,20 +3,25 @@ import { AUTO_REFRESH_API } from "../constants";
 import { customFetch } from "../utils/customFetch";
 
 const useFetch = (
-  { method = "GET", url = "", data = null, headers = {}, ...config },
+  { method = "GET", url = "", data = null, headers = {}, ...requestConfig },
   dependencies = [],
-  autoRefresh = false
+  config = {}
 ) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const timerRef = useRef();
 
+  const { autoRefresh = false, shouldFetch = true } = config;
+
   useEffect(() => {
+    if (!shouldFetch) {
+      return;
+    }
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await customFetch({ method, url, data, headers, ...config });
+        const res = await customFetch({ method, url, data, headers, ...requestConfig });
         setResponse(res.data);
       } catch (err) {
         setError(err.message);
