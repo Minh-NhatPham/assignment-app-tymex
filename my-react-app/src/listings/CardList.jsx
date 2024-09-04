@@ -48,14 +48,7 @@ function CardList({ filters, sort: sortOption }) {
       {loading ? (
         <Spin size="large" />
       ) : (
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            paddingLeft: "8px",
-            justifyContent: "space-between",
-          }}
-        >
+        <div className="card-list__container">
           {sortItems(filterItems(list, filters), sortOption).map((item, index) => (
             <CardItem item={item} key={"card-item-" + index} />
           ))}

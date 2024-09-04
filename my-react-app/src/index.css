@@ -1,6 +1,5 @@
 :root {
   font-family: Roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  /* line-height: 1.5; */
   font-weight: 400;
   height: 100%;
 
@@ -37,9 +36,6 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  /* border-color: #646cff; */
-}
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -72,8 +68,8 @@ button:focus-visible {
 }
 
 .left-bar-container{
+  display: table;
   padding: 12px;
-  flex: 0 0 25%;
 }
 .left-bar-container.ant-layout-sider,.search-results-container{
   overflow-y: scroll;
@@ -122,6 +118,8 @@ button:focus-visible {
 .no-product,.load-more-product{
   padding: 20px 0;
 }
-
-.search-page{
+.card-list__container{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 8px;
 }

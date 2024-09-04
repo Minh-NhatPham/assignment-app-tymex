@@ -16,7 +16,7 @@ function App() {
         </Flex>
       </div>
       <Layout className="page-footer">
-        <Footer>Footer</Footer>
+        <Footer>Pham Nhat Minh</Footer>
       </Layout>
     </>
   );

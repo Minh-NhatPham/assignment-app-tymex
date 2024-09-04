@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { AUTO_REFRESH_API } from "../constants";
 import { customFetch } from "../utils/customFetch";
 
 const useFetch = (
@@ -10,9 +9,8 @@ const useFetch = (
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const timerRef = useRef();
 
-  const { autoRefresh = false, shouldFetch = true } = config;
+  const { shouldFetch = true } = config;
 
   useEffect(() => {
     if (!shouldFetch) {
