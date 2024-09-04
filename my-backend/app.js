@@ -4,7 +4,7 @@ import fs from "fs";
 
 const app = express();
 
-const itemPerPage = 2;
+const itemPerPage = 5;
 const port = 5175;
 
 app.use(cors({ origin: "*", methods: "GET", origin: "http://localhost:5173" }));
@@ -12,7 +12,7 @@ app.use(cors({ origin: "*", methods: "GET", origin: "http://localhost:5173" }));
 app.get("/products", async (req, res) => {
   const { page, refresh } = req.query;
   const start = refresh ? 0 : page * itemPerPage;
-  const end = refresh ? (page + 1) * itemPerPage : start + itemPerPage;
+  const end = refresh ? (Number(page) + 1) * itemPerPage : Number(start) + Number(itemPerPage);
 
   let response;
 

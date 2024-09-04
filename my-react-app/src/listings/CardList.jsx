@@ -3,10 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { AUTO_REFRESH_API } from "../constants";
 import useFetch from "../hooks/useFetch";
 import { customFetch } from "../utils/customFetch";
-import { filterItems } from "../utils/utils";
+import { filterItems, sortItems } from "../utils/utils";
 import CardItem from "./card";
 
-function CardList({ filters }) {
+function CardList({ filters, sort: sortOption }) {
   const [page, setPage] = useState(0);
   const [list, setList] = useState([]);
   const [showLoadMore, setShowLoadMore] = useState(true);
@@ -48,18 +48,27 @@ function CardList({ filters }) {
       {loading ? (
         <Spin size="large" />
       ) : (
-        <div style={{ display: "flex", flexWrap: "wrap", paddingLeft: "8px" }}>
-          {filterItems(list, filters).map((item, index) => (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            paddingLeft: "8px",
+            justifyContent: "space-between",
+          }}
+        >
+          {sortItems(filterItems(list, filters), sortOption).map((item, index) => (
             <CardItem item={item} key={"card-item-" + index} />
           ))}
         </div>
       )}
       {showLoadMore ? (
-        <button onClick={handleLoadMore} disabled={loading}>
-          Load more
-        </button>
+        <div className="load-more-product">
+          <button onClick={handleLoadMore} disabled={loading}>
+            Load more
+          </button>
+        </div>
       ) : (
-        <>You've seen all the products</>
+        <div className="no-product">You've seen all the products</div>
       )}
     </>
   );

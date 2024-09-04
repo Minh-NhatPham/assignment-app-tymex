@@ -4,11 +4,17 @@ export const filterItems = (items, filters) => {
       if (filters[key] === "all") {
         return item[key];
       }
-      return item[key] === filters[key];
+      return item[key].toString() === filters[key].toString();
     });
   });
 };
+export const sortItems = (items, option) => {
+  const [key, value] = option?.split(":");
 
+  if (value === "all") return items;
+
+  return items?.sort((a, b) => (value === "asc" ? a[key] - b[key] : b[key] - a[key]));
+};
 export const buildCategoriesOptions = (categories) => {
   return Object.keys(categories).map((key) => {
     const options = categories[key].map((option) => ({

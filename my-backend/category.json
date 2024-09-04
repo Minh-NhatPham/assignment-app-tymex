@@ -7,8 +7,10 @@
   ],
   "category": [
     { "value": "all", "label": "All" },
-    { "value": "jacket", "label": "Cold Jacket" },
-    { "value": "shirt", "label": "T-shirt" },
-    { "value": "pants", "label": "Pants" }
+    { "value": 1, "label": "Eastlawn" },
+    { "value": 2, "label": "Oakridge" },
+    { "value": 3, "label": "Bartelt" },
+    { "value": 4, "label": "Eliot" },
+    { "value": 5, "label": "Prairie Rose" }
   ]
 }

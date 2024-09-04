@@ -1,24 +1,24 @@
-import { useState } from "react";
-import { Flex, Layout } from "antd";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Flex, Image, Layout } from "antd";
 import "./App.css";
-import SearchBox from "./components/search";
-import CardList from "./listings/CardList";
-import Sidebar from "./components/Sidebar";
 import SearchPage from "./pages/SearchPage";
+import CoverImg from "../public/header-cover.png";
 
 function App() {
-  const { Header } = Layout;
+  const { Footer } = Layout;
   return (
-    <div className="container">
-      <Flex>
-        <Layout>
-          <Header />
-          <SearchPage />
-        </Layout>
-      </Flex>
-    </div>
+    <>
+      <div className="page-container">
+        <Flex className="page-content">
+          <Layout>
+            <Image src={CoverImg} height="300px" preview={false} />
+            <SearchPage />
+          </Layout>
+        </Flex>
+      </div>
+      <Layout className="page-footer">
+        <Footer>Footer</Footer>
+      </Layout>
+    </>
   );
 }
 

@@ -7,23 +7,26 @@ import CardList from "../listings/CardList";
 
 function SearchPage({}) {
   const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("all");
   const onFilterChange = (filter) => {
-    console.log("eee", filter);
     const newFilter = {
       [filter.key]: filter.value,
     };
     setFilters({ ...filters, ...newFilter });
   };
+  const onSortChange = (sort) => {
+    setSort(sort);
+  };
+
   return (
-    <Layout style={{ height: "100%" }}>
-      <Sider style={{ midWidth: "25%" }} className="left-bar-container">
-        <Sidebar onFilterChange={onFilterChange} />
+    <Layout className="search-page">
+      <Sider width={"20%"} className="left-bar-container">
+        <Sidebar onFilterChange={onFilterChange} onSortChange={onSortChange} />
       </Sider>
       <Layout className="search-results-container">
         <Content style={{ padding: "12px" }}>
-          <CardList filters={filters} />
+          <CardList filters={filters} sort={sort} />
         </Content>
-        <Footer>Footer</Footer>
       </Layout>
     </Layout>
   );
