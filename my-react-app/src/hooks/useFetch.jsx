@@ -31,10 +31,6 @@ const useFetch = (
     };
 
     fetchData();
-    // if (autoRefresh) {
-    //   timerRef.current = setInterval(fetchData, AUTO_REFRESH_API);
-    // }
-    // return () => clearInterval(timerRef.current);
   }, [url, ...dependencies]);
 
   return { response, error, loading };
