@@ -30,8 +30,8 @@ function CardList({ filters }) {
   useEffect(() => {
     clearInterval(timerRef.current);
     timerRef.current = setInterval(async () => {
-      const data = await customFetch({ url: "/products", params: { page, refresh: true } });
-      setData(data);
+      const response = await customFetch({ url: "/products", params: { page, refresh: true } });
+      setList(response.data);
     }, AUTO_REFRESH_API);
     return () => clearInterval(timerRef.current);
   }, [page]);
@@ -48,22 +48,11 @@ function CardList({ filters }) {
       {loading ? (
         <Spin size="large" />
       ) : (
-        <>
-          <List
-            grid={{
-              gutter: 8,
-              column: 3,
-            }}
-            dataSource={filterItems(list, filters)}
-            renderItem={(item) => {
-              return (
-                <List.Item>
-                  <CardItem title={item.name} description={item.description} />
-                </List.Item>
-              );
-            }}
-          />
-        </>
+        <div style={{ display: "flex", flexWrap: "wrap", paddingLeft: "8px" }}>
+          {filterItems(list, filters).map((item, index) => (
+            <CardItem item={item} key={"card-item-" + index} />
+          ))}
+        </div>
       )}
       {showLoadMore ? (
         <button onClick={handleLoadMore} disabled={loading}>

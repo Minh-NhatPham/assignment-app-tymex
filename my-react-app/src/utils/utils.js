@@ -15,6 +15,6 @@ export const buildCategoriesOptions = (categories) => {
       value: `${key}:${option.value}`,
       label: option.label,
     }));
-    return options;
+    return { title: key, options };
   });
 };

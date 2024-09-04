@@ -9,16 +9,16 @@ import Sidebar from "./components/Sidebar";
 import SearchPage from "./pages/SearchPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const { Sider, Header, Footer, Content } = Layout;
+  const { Header } = Layout;
   return (
-    <>
+    <div className="container">
       <Flex>
         <Layout>
+          <Header />
           <SearchPage />
         </Layout>
       </Flex>
-    </>
+    </div>
   );
 }
 

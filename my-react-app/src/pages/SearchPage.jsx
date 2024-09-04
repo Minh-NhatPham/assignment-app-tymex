@@ -14,19 +14,18 @@ function SearchPage({}) {
     };
     setFilters({ ...filters, ...newFilter });
   };
-  console.log("new filt", filters);
   return (
-    <div>
-      <Sider width="20%">
+    <Layout style={{ height: "100%" }}>
+      <Sider style={{ midWidth: "25%" }} className="left-bar-container">
         <Sidebar onFilterChange={onFilterChange} />
       </Sider>
-      <Layout>
+      <Layout className="search-results-container">
         <Content style={{ padding: "12px" }}>
           <CardList filters={filters} />
         </Content>
         <Footer>Footer</Footer>
       </Layout>
-    </div>
+    </Layout>
   );
 }
 

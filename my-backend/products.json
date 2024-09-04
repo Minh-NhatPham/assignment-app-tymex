@@ -2,31 +2,40 @@
   {
     "id": 1,
     "category": "Barton-Kutch",
-    "name": "Jakubowski, O'Reilly and Wiza",
-    "gender": "M"
+    "name": "Barton-Kutch",
+    "gender": "M",
+    "description": "Jakubowski, O'Reilly and Wiza",
+    "price": 9
   },
   {
     "id": 2,
     "category": "Parisian and Sons",
-    "name": "Murray , Aufderhar and Homenick",
-    "gender": "M"
+    "name": "Parisian and Sons",
+    "gender": "M",
+    "description": "Murray , Aufderhar and Homenic",
+    "price": 19.2
   },
   {
     "id": 3,
     "category": "Weber Group",
-    "name": "Murray LLC",
-    "gender": "F"
+    "name": "LLC",
+    "gender": "F",
+    "description": "Murray",
+    "price": 33.5
   },
   {
     "id": 4,
     "category": "Crona-Streich",
     "name": "Cummerata-Klein",
-    "gender": "F"
+    "gender": "F",
+    "price": 1
   },
   {
     "id": 5,
     "category": "Wintheiser, MacGyver and Considine",
     "name": "Braun-Miller",
-    "gender": "U"
+    "gender": "U",
+    "description": "Wintheiser, MacGyver and Considine",
+    "price": 19.6
   }
 ]

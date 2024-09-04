@@ -8,32 +8,25 @@ function Sidebar({ onFilterChange }) {
   const { error, loading, response } = useFetch({ url: "/category" }, []);
   const handleChange = (option) => {
     const [key, value] = option.split(":");
-    console.log("key,", key, value);
     onFilterChange({ key, value });
   };
   return (
     <>
       <SearchBox />
-      <div>
-        <span>Title</span>
-        <select
-          name="somethinf"
-          onChange={(e) => {
-            console.log("duma", e.currentTarget.name);
-          }}
-        >
-          <option value="adu">adu</option>
-          <option value="ad2">adu</option>
-        </select>
-      </div>
       {response?.data
-        ? buildCategoriesOptions(response.data).map((options) => (
-            <Select
-              style={{ width: 120 }}
-              defaultValue={"All"}
-              options={options}
-              onChange={handleChange}
-            />
+        ? buildCategoriesOptions(response.data).map(({ title, options }) => (
+            <div style={{ marginTop: "20px" }} key={`category-select__${title}`}>
+              <div className="category-selector__label" style={{ textAlign: "left" }}>
+                {title.toUpperCase()}
+              </div>
+              <Select
+                className={"category-selector__select"}
+                style={{ width: "100%" }}
+                defaultValue={"All"}
+                options={options}
+                onChange={handleChange}
+              />
+            </div>
           ))
         : null}
     </>

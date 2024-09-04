@@ -1,16 +1,21 @@
 import React from "react";
 import { Card } from "antd";
-function CardItem({ title, description }) {
+function CardItem({ item }) {
+  const { name, description, price } = item;
   return (
     <Card
       hoverable
       style={{
-        width: 240,
+        width: "30%",
       }}
       cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
     >
-      {title}
-      <span>{description}</span>
+      <span>{name}</span>
+      <div style={{ display: "flex" }}>
+        <span>Price:</span>
+        <b>Only {price}$</b>
+      </div>
+      <div className="card-item__description">{description}</div>
     </Card>
   );
 }
