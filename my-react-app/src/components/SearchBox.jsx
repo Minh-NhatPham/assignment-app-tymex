@@ -2,7 +2,7 @@ import { Dropdown, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { debounce } from "lodash";
 import useFetch from "../hooks/useFetch";
-// TODO: add search icon infront search inputaddonBefore={<SearchOutlined />}
+
 function SearchBox({}) {
   const [search, setSearch] = useState(null);
 
@@ -23,8 +23,7 @@ function SearchBox({}) {
     : [];
 
   const handleSearch = (e) => {
-    const searchKeyword = e.target.value;
-    setSearch(searchKeyword);
+    setSearch(e.target.value);
   };
   return (
     <>

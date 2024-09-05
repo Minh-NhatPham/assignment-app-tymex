@@ -10,7 +10,7 @@ function App() {
       <div className="page-container">
         <Flex className="page-content">
           <Layout>
-            <Image src={CoverImg} height="300px" preview={false} />
+            <Image src={CoverImg} height="500px" preview={false} />
             <SearchPage />
           </Layout>
         </Flex>

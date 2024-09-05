@@ -1,10 +1,11 @@
-import { List, Spin } from "antd";
+import { Spin } from "antd";
 import React, { useEffect, useRef, useState } from "react";
-import { AUTO_REFRESH_API } from "../constants";
-import useFetch from "../hooks/useFetch";
-import { customFetch } from "../utils/customFetch";
-import { filterItems, sortItems } from "../utils/utils";
-import CardItem from "./card";
+import CardItem from "../../components/CardItem";
+import "./CardList.css";
+import { AUTO_REFRESH_API } from "../../constants";
+import useFetch from "../../hooks/useFetch";
+import { customFetch } from "../../utils/customFetch";
+import { filterItems, sortItems } from "../../utils/utils";
 
 function CardList({ filters, sort: sortOption }) {
   const [page, setPage] = useState(0);

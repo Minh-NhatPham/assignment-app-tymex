@@ -1,8 +1,9 @@
 import { Select } from "antd";
 import React from "react";
-import useFetch from "../hooks/useFetch";
-import { buildCategoriesOptions } from "../utils/utils";
-import SearchBox from "./search";
+import SearchBox from "../../components/SearchBox";
+import useFetch from "../../hooks/useFetch";
+import { buildCategoriesOptions } from "../../utils/utils";
+import "./Sidebar.css";
 
 function Sidebar({ onFilterChange, onSortChange }) {
   const { error, loading, response } = useFetch({ url: "/category" }, []);

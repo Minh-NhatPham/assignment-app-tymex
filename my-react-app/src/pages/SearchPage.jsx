@@ -1,9 +1,9 @@
 import { Layout } from "antd";
-import { Content, Footer } from "antd/es/layout/layout";
+import { Content } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import React, { useState } from "react";
-import Sidebar from "../components/Sidebar";
-import CardList from "../listings/CardList";
+import CardList from "../layout/Content/CardList";
+import Sidebar from "../layout/Sidebar/Sidebar";
 
 function SearchPage({}) {
   const [filters, setFilters] = useState({});
