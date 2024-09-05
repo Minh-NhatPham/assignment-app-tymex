@@ -6,14 +6,24 @@ This project is a web application consisting of a frontend built with React.js a
 
 ## Directory Structure
 
-- **frontend/**: Contains the React.js application.
-- **backend/**: Contains the Express.js server and API.
+- **my-react-app/**: Contains the React.js application.
+- **my-backend/**: Contains the Express.js server and API.
 
 ## Features
+
+Features implemented:
 
 - Search: Search items by keywords.
 - Filter and Sort: Filter and sort items based on user's needs.
 - Loadmore: Load more items if user want to see more items on the page.
+- AutoRefresh: refresh all the items each every 60 seconds
+
+If i had more time, maybe i would :
+
+- Make the site more eye catching, better design
+- Apply query with the filters to the items in the back-end not just on the front-end like right now.
+- Add the filters and search to the url so when user refresh page the searching will be still available.
+- Add a selection for user to decide how many items are displayed on the page.
 
 ## Installation
 
