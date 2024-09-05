@@ -1,7 +1,7 @@
 import { Flex, Image, Layout } from "antd";
 import "./App.css";
 import SearchPage from "./pages/SearchPage";
-import CoverImg from "../public/header-cover.png";
+import CoverImg from "/header-cover.png";
 
 function App() {
   const { Footer } = Layout;

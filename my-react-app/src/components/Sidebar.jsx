@@ -20,10 +20,8 @@ function Sidebar({ onFilterChange, onSortChange }) {
       <div className="category-selector-container">
         {response?.data
           ? buildCategoriesOptions(response.data).map(({ title, options }) => (
-              <div style={{ marginTop: "20px" }} key={`category-select__${title}`}>
-                <div className="category-selector__label" style={{ textAlign: "left" }}>
-                  {title.toUpperCase()}
-                </div>
+              <div className="category-selector__wrapper" key={`category-select__${title}`}>
+                <div className="category-selector__label">{title.toUpperCase()}</div>
                 <Select
                   className={"category-selector__select"}
                   style={{ width: "100%" }}
@@ -34,12 +32,10 @@ function Sidebar({ onFilterChange, onSortChange }) {
               </div>
             ))
           : null}
-        <div style={{ marginTop: "20px" }} key={"category-selector__sort"}>
-          <div className="category-selector__label" style={{ textAlign: "left" }}>
-            SORT
-          </div>
+        <div className="sort-selector__wrapper">
+          <div className="sort-selector__label">SORT BY</div>
           <Select
-            className={"category-selector__select"}
+            className={"sort-selector__select"}
             style={{ width: "100%" }}
             defaultValue={"all"}
             options={[

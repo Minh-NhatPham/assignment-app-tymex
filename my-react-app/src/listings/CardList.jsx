@@ -41,7 +41,7 @@ function CardList({ filters, sort: sortOption }) {
     setPage((p) => p + 1);
   };
   if (error) {
-    return <>Error 404</>;
+    return <>Sorry, some thing went wrong</>;
   }
   return (
     <>

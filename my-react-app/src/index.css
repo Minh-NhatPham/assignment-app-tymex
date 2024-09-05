@@ -79,7 +79,13 @@ button:focus-visible {
   margin-top: 24px;
   border-top: 1px solid #DEDEDE;
 }
-.category-selector__label{
+
+.category-selector__wrapper, .sort-selector__wrapper{
+  margin-top: 20px;
+}
+
+.category-selector__label,.sort-selector__label{
+  text-align: left;
   font-weight: 600;
   font-size:  12px;
   color:#242424
@@ -88,6 +94,7 @@ button:focus-visible {
 .card-item__price{
   display: flex;
   justify-content: space-between;
+  padding-top: 6px;
 }
 
 .card-item__description{
